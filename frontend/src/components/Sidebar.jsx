@@ -7,7 +7,7 @@ const menuItems = [
   { icon: FiWind, text: 'Air Quality', path: '/air-quality' },
   { icon: FiDroplet, text: 'Water Quality', path: '/water-quality' },
   { icon: FiThermometer, text: 'Temperature', path: '/temperature' },
-  { icon: FiBell, text: 'Alerts', path: '/alerts' },
+  { icon: FiBell, text: 'Alerts Setting', path: '/alerts' },
 ];
 
 function Sidebar() {
@@ -19,12 +19,12 @@ function Sidebar() {
       transition={{ duration: 0.5 }}
     >
       <div className="flex flex-col h-full">
-        <div className="flex items-center justify-center h-16 border-b border-gray-100">
+        <div className="flex w-full items-center  justify-center  border-b border-gray-100">
           <motion.img 
-            src="/logo.svg" 
+            src={"/envolyze.jpeg"} 
             alt="ENVOLYZE Logo" 
-            className="h-8"
-            whileHover={{ scale: 1.1 }}
+            className="h-18 "
+            
           />
         </div>
 
