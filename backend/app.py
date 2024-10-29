@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
-from AQI_API import get_aqi
+from AQI_API import *
 from Temp_API import get_temp
 
 app = Flask(__name__)
@@ -23,6 +23,17 @@ def GetAQIMetrics():
         }
     }
     
+@app.route("/airdf")
+def GetAQIMetricsDF():
+    data = get_aqi_df("City")
+    labels = [x.strftime("%m-%d %H:%M") for x in data["date"]]
+    return {
+        "labels": labels,
+        "pm25": data["pm2_5"].to_list(),
+        "nox": data["nitrogen_dioxide"].to_list(),
+        "o3": data["ozone"].to_list(),
+    }
+
 @app.route("/water")
 def GetWQIMetrics():
     return {

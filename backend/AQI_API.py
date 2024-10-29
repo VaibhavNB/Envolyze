@@ -12,14 +12,14 @@ openmeteo = openmeteo_requests.Client(session = retry_session)
 
 url = "https://air-quality-api.open-meteo.com/v1/air-quality"
 
-def get_aqi(city):
+def get_aqi_df(city):
     [lat, long] = get_location(city)
     params = {
 	"latitude": lat,
 	"longitude": long,
 	"hourly": ["pm2_5", "nitrogen_dioxide", "ozone"],
-	"past_days": 0,
-	"forecast_days": 1
+	"past_days": 1,
+	"forecast_days": 0
     }
 
     responses = openmeteo.weather_api(url, params=params)
@@ -43,11 +43,15 @@ def get_aqi(city):
 
     hourly_dataframe = pd.DataFrame(data = hourly_data)
 
-    data = hourly_dataframe.tail(1)
+    return hourly_dataframe
+
+def get_aqi(city):
+    d = get_aqi_df(city)
+    data = d.tail(1).values[0].tolist()
 
     return {
         #"AQI": data.values[0].tolist()[1],
-        "pm25": data.values[0].tolist()[1],
-        "no2": data.values[0].tolist()[2],
-        "o3": data.values[0].tolist()[3],
+        "pm25": data[1],
+        "no2": data[2],
+        "o3": data[3],
     }
