@@ -5,6 +5,7 @@ import AirQualityChart from '../components/charts/AirQualityChart';
 import WaterQualityChart from '../components/charts/WaterQualityChart';
 import SensorMap from '../components/maps/SensorMap';
 import { useState, useEffect } from 'react';
+import FavLoc from '../components/FavLoc';
 
 function GetStats(){
   const [data, setdata] = useState({
@@ -14,17 +15,20 @@ function GetStats(){
     AS: 0,
   });
   useEffect(() => {
-    fetch("http://localhost:5000/allmetrics")
-      .then((res) => res.json()
-      .then((data) => {
-        setdata({
-          AQI: data.AQI,
-          WQI: data.WQI,
-          Temp: data.Temp,
-          AS: data.AS,
-        });
-      }))
-  });
+    setTimeout(() => {
+      fetch("http://localhost:5000/allmetrics")
+        .then((res) => res.json()
+        .then((data) => {
+          setdata({
+            AQI: data.AQI,
+            WQI: data.WQI,
+            Temp: data.Temp,
+            AS: data.AS,
+          });
+        }))
+    }, 100);
+  }, []); // Add an empty array as the second argument to useEffect
+
   return data;
 }
 
@@ -69,8 +73,20 @@ const Dashboard = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        Environmental Monitoring Dashboard
+        <p className='text-3xl font-semibold text-green-800'>Environmental Monitoring Dashboard</p>
       </motion.h1>
+      {/* Fav Locations */}
+
+      {/* Fav Locations */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <FavLoc place="Delhi" temp='35' humid='32'/>
+        <FavLoc place="Tumkur" temp='30' humid='28'/>
+        <FavLoc place="Bengalore" temp='22' humid='60'/>
+        <FavLoc place="Hubli" temp='28' humid='50'/>
+        
+
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
@@ -80,6 +96,8 @@ const Dashboard = () => {
           />
         ))}
       </div>
+
+     
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <AirQualityChart />

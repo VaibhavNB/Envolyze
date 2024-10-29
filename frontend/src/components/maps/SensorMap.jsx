@@ -19,7 +19,7 @@ const SensorMap = () => {
   ];
 
   return (
-    <div className="h-[400px] bg-white p-4 rounded-lg shadow-lg">
+    <div className=" bg-white p-4 rounded-lg shadow-lg">
       <MapContainer center={[13.37541, 77.09684]} zoom={8} className="h-full">
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -10,6 +10,10 @@ import Alerts from './pages/Alerts';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
+import AllAlerts from './pages/AllAlerts';
+import Admin from './pages/Admin';
+import Footer from './components/Footer';
+
 function App() {
   return (
     <Router>
@@ -25,10 +29,13 @@ function App() {
                 <Route path="/water-quality" element={<WaterQuality />} />
                 <Route path="/temperature" element={<Temperature />} />
                 <Route path="/alerts" element={<Alerts />} />
+                <Route path="/allAlerts" element={<AllAlerts />} />
+                <Route path="/admin" element={<Admin />} />
               </Routes>
             </div>
           </main>
         </div>
+           
         <ToastContainer 
           position="bottom-right"
           autoClose={5000}
@@ -42,7 +49,9 @@ function App() {
           theme="light"
           className="toast-container"
         />
+       
       </div>
+      <Footer/>
     </Router>
   );
 }
