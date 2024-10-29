@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 font-sans antialiased;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 p-6 transition-all duration-200 hover:shadow-md;
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  .input {
+    @apply w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none;
+  }
+
+  .stats-value {
+    @apply text-2xl font-bold text-gray-900;
+  }
+
+  .stats-label {
+    @apply text-sm font-medium text-gray-500;
+  }
+
+  .nav-link {
+    @apply flex items-center px-4 py-2 text-gray-600 rounded-lg transition-colors duration-200 hover:bg-primary-50 hover:text-primary-700;
+  }
+
+  .nav-link.active {
+    @apply bg-primary-50 text-primary-700 font-medium;
+  }
+}
+
+/* Chart customizations */
+.tremor-Card-root {
+  @apply shadow-sm border border-gray-100 !important;
+}
+
+.leaflet-container {
+  @apply rounded-xl overflow-hidden border border-gray-100 !important;
+  height: 400px;
+}
