@@ -1,5 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
+from AQI_API import get_aqi
+from Temp_API import get_temp
 
 app = Flask(__name__)
 
@@ -11,13 +13,13 @@ def hello_world():
 
 @app.route("/air")
 def GetAQIMetrics():
+    data = get_aqi("City")
     return {
-        "AQI": 32,
+        "AQI": 45,
         "pollutants": {
-        "pm25": 12.5,
-        "pm10": 25.3,
-        "nox": 21.2,
-        "o3": 48.1,
+        "pm25": round(data["pm25"], 4),
+        "nox": round(data["no2"], 4),
+        "o3": round(data["o3"]),
         }
     }
     
@@ -34,9 +36,10 @@ def GetWQIMetrics():
     
 @app.route("/temp")
 def GetTempMetrics():
+    data = get_temp("City")
     return {
-        "Temp": 24,
-        "humidity": 65,
+        "Temp": round(data["temp"]),
+        "humidity": round(data["humidity"]), 
     }
 
 @app.route("/Sensors")
