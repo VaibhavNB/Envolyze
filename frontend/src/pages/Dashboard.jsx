@@ -6,6 +6,7 @@ import WaterQualityChart from '../components/charts/WaterQualityChart';
 import SensorMap from '../components/maps/SensorMap';
 import { useState, useEffect } from 'react';
 import FavLoc from '../components/FavLoc';
+import { Filter } from '../components/filter';
 
 function GetStats(){
   const [data, setdata] = useState({
@@ -73,11 +74,16 @@ const Dashboard = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <p className='text-3xl font-semibold text-green-800'>Environmental Monitoring Dashboard</p>
+        <p className='text-3xl w-full text-center font-semibold text-green-800'>Environmental Monitoring Dashboard</p>
       </motion.h1>
-      {/* Fav Locations */}
-
-      {/* Fav Locations */}
+      {/* Filter Locations */}
+      <div className='w-full flex flex-col justify-center items-center'>
+        <p className='text-md text-center mb-4 text-gray-600 font-semibold'>
+          Choose State to know the Forcast
+        </p>
+        <Filter/>
+      </div>
+      {/* filter Locations end */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
         <FavLoc place="Delhi" temp='35' humid='32'/>
