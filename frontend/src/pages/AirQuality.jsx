@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Card, Title, Text, AreaChart } from '@tremor/react';
+import { Card, Title, Text } from '@tremor/react';
 
 function GetStats(){
   const [data, setdata] = useState({
@@ -21,7 +21,6 @@ function GetStats(){
   });
   return data;
 }
-
 
 function AirQuality() {
   let data = GetStats();

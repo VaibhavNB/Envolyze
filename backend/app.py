@@ -68,10 +68,11 @@ def AllMetrics():
         "AS": GetSensorInfo()["AS"]
     }
 
-@app.route('/predict', methods=['POST'])
-def predict():
-    data = request.json
-    processed_data = preprocess_data(data)
-    wqi = model.predict(processed_data)
-    quality_status = water_quality_status(wqi[0])
-    return jsonify({'WQI': wqi[0], 'Quality_Status': quality_status})
+#@app.route('/predict', methods=['POST'])
+#def predict():
+#    data = request.json
+#    processed_data = preprocess_data(data)
+#    wqi = model.predict(processed_data)
+#    quality_status = water_quality_status(wqi[0])
+#    return jsonify({'WQI': wqi[0], 'Quality_Status': quality_status})
+#
