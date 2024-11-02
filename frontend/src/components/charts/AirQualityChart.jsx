@@ -10,6 +10,7 @@ import {
   Legend,
   Filler,
 } from 'chart.js';
+import { useState, useEffect } from 'react';
 
 ChartJS.register(
   CategoryScale,
@@ -23,21 +24,50 @@ ChartJS.register(
 );
 
 const AirQualityChart = () => {
+  const [res_data, setdata] = useState({
+    labels: [],
+    pm25: [],
+    nox: [],
+    o3: [],
+  });
+  setTimeout(() => {}, 1000);
+  useEffect(() => {
+    fetch('http://localhost:5000/airdf')
+      .then((res) => res.json())
+      .then((res_data) => {
+        setdata({
+          labels: res_data.labels,
+          pm25: res_data.pm25,
+          nox: res_data.nox,
+          o3: res_data.o3,
+        })
+      })
+    }, []
+  );
+
   const data = {
-    labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+    labels: res_data.labels,
     datasets: [
       {
         label: 'PM2.5',
-        data: [35, 42, 50, 45, 38, 40],
+        data: res_data.pm25,
         borderColor: '#2d8bba',
         backgroundColor: 'rgba(45, 139, 186, 0.1)',
         fill: true,
         tension: 0.4,
       },
       {
-        label: 'NOx',
-        data: [20, 25, 30, 35, 28, 22],
+        label: 'NO2',
+        data: res_data.nox,
         borderColor: '#63c5ea',
+        backgroundColor: 'rgba(99, 197, 234, 0.1)',
+        fill: true,
+        tension: 0.4,
+      },
+      {
+        label: 'O3',
+        data: res_data.o3,
+        borderColor: '#b8e8ff',
         backgroundColor: 'rgba(99, 197, 234, 0.1)',
         fill: true,
         tension: 0.4,
