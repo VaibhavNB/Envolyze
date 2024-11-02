@@ -17,11 +17,11 @@ import Footer from './components/Footer';
 function App() {
   return (
     <Router>
-      <div className="flex h-screen bg-gray-50">
+      <div className="flex h-screen bg-gray-200">
         <Sidebar />
         <div className="flex-1 flex flex-col overflow-hidden">
           <Navbar />
-          <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6">
+          <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 p-6">
             <div className="max-w-7xl mx-auto">
               <Routes>
                 <Route path="/" element={<Dashboard />} />
@@ -33,6 +33,7 @@ function App() {
                 <Route path="/admin" element={<Admin />} />
               </Routes>
             </div>
+          <Footer/>
           </main>
         </div>
            
@@ -50,8 +51,11 @@ function App() {
           className="toast-container"
         />
        
+      
       </div>
-      <Footer/>
+      <div>
+
+      </div>
     </Router>
   );
 }

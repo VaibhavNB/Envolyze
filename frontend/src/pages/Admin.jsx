@@ -25,7 +25,7 @@ const [isEdit,setIsEdit] = useState(false)
     <div className='w-full gap-4 flex justify-center items-center '>
 
     
-    <div className='max-w-lg flex flex-col gap-2 text-sm '>
+    <div className='max-w-lg flex flex-col gap-2 rounded-lg p-4 m-4 bg-white text-sm '>
         <img className='w-36 rounded' src={userDate.image} alt="" />
         {
           isEdit ? <input className='bg-gray-50 text-3xl font-medium max-w-60 mt-4' value={userDate.name} onChange={(e) => setUserDate(prev => ({...prev, name: e.target.value}))} type="text" /> : <p className='font-medium text-3xl text-neutral-800 mt-4'>{userDate.name}</p>
