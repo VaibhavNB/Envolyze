@@ -74,6 +74,7 @@ function AirQuality() {
         */}
 
       </motion.div>
+      <div className='h-40'></div>
     </div>
   );
 }

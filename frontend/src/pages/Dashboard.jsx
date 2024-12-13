@@ -113,7 +113,9 @@ const Dashboard = () => {
       <div className="w-full">
         <SensorMap />
       </div>
+      <div className='h-40'></div>
     </div>
+    
   );
 };
 
